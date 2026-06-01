@@ -4,6 +4,7 @@ import {
   type DesignOption,
 } from './components/FloatingDesignMenu'
 import { Design1 } from './designs/design1/Design1'
+import { Design2 } from './designs/design2/Design2'
 import { DesignPlaceholder } from './designs/DesignPlaceholder'
 
 export default function App() {
@@ -12,7 +13,7 @@ export default function App() {
   return (
     <>
       {design === 1 && <Design1 />}
-      {design === 2 && <DesignPlaceholder number={2} />}
+      {design === 2 && <Design2 />}
       {design === 3 && <DesignPlaceholder number={3} />}
 
       <FloatingDesignMenu value={design} onChange={setDesign} />

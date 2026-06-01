@@ -1,0 +1,235 @@
+.d2-course {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 12px;
+  background: var(--d2-surface);
+  border: 1px solid var(--d2-line);
+  overflow: hidden;
+  transition:
+    border-color 0.2s var(--d2-ease-out),
+    box-shadow 0.2s var(--d2-ease-out),
+    transform 0.2s var(--d2-ease-out);
+}
+
+.d2-course:hover {
+  border-color: rgba(29, 78, 216, 0.35);
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+  transform: translateY(-2px);
+}
+
+.d2-course--featured {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .d2-course--featured {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr);
+  }
+}
+
+.d2-course__thumb {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  min-height: 140px;
+  padding: 1rem;
+  background: var(--d2-thumb-gradient);
+}
+
+.d2-course--featured .d2-course__thumb {
+  min-height: 100%;
+  aspect-ratio: auto;
+}
+
+@media (min-width: 768px) {
+  .d2-course--featured .d2-course__thumb {
+    min-height: 280px;
+  }
+}
+
+.d2-course[data-area='estructuras'] {
+  --d2-thumb-gradient: linear-gradient(145deg, #1e3a5f 0%, #0f172a 100%);
+}
+
+.d2-course[data-area='geotecnia'] {
+  --d2-thumb-gradient: linear-gradient(145deg, #3f4f3a 0%, #1a2118 100%);
+}
+
+.d2-course[data-area='hidraulica'] {
+  --d2-thumb-gradient: linear-gradient(145deg, #1e4a6e 0%, #0c1929 100%);
+}
+
+.d2-course[data-area='transporte'] {
+  --d2-thumb-gradient: linear-gradient(145deg, #4a3f35 0%, #1c1814 100%);
+}
+
+.d2-course[data-area='construccion'] {
+  --d2-thumb-gradient: linear-gradient(145deg, #334155 0%, #0f172a 100%);
+}
+
+.d2-course[data-area='ambiental'] {
+  --d2-thumb-gradient: linear-gradient(145deg, #1f4d3f 0%, #0b1f19 100%);
+}
+
+.d2-course[data-area='urbanismo'] {
+  --d2-thumb-gradient: linear-gradient(145deg, #3d3258 0%, #15101f 100%);
+}
+
+.d2-course__area {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.d2-course__play {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.d2-course__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem;
+  gap: 0.75rem;
+}
+
+.d2-course--featured .d2-course__body {
+  padding: 1.5rem 1.5rem 1.5rem 1.25rem;
+}
+
+.d2-course__meta-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.d2-course__status {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+.d2-course__status--open {
+  color: #14532d;
+  background: #dcfce7;
+}
+
+.d2-course__status--soon {
+  color: #1e3a8a;
+  background: #dbeafe;
+}
+
+.d2-course__level {
+  font-size: 0.75rem;
+  color: var(--d2-muted);
+}
+
+.d2-course__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.d2-course--featured .d2-course__title {
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+}
+
+.d2-course__excerpt {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--d2-muted);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.d2-course__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8rem;
+  color: var(--d2-muted);
+}
+
+.d2-course__facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.d2-course__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--d2-line);
+}
+
+@media (min-width: 480px) {
+  .d2-course__footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.d2-course__instructor {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--d2-muted);
+}
+
+.d2-course__instructor strong {
+  color: var(--d2-ink);
+  font-weight: 600;
+}
+
+.d2-course__cta {
+  flex-shrink: 0;
+  padding: 0.55rem 1rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--d2-accent);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.2s var(--d2-ease-out),
+    transform 0.15s var(--d2-ease-out),
+    opacity 0.2s var(--d2-ease-out);
+}
+
+.d2-course__cta:hover:not(:disabled) {
+  background: var(--d2-accent-hover);
+}
+
+.d2-course__cta:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.d2-course__cta:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .d2-course:hover {
+    transform: none;
+  }
+}
