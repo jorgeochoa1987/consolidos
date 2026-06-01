@@ -210,6 +210,108 @@
   will-change: transform;
 }
 
+/* Skyline de edificios — capas parallax */
+.d3-skyline {
+  position: absolute;
+  inset: auto 0 0;
+  height: min(52vh, 420px);
+  z-index: 1;
+  pointer-events: none;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 28%, #000 100%);
+}
+
+.d3-skyline__layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.d3-skyline__layer--back {
+  opacity: 0.45;
+  transform-origin: 50% 100%;
+}
+
+.d3-skyline__layer--mid {
+  opacity: 0.72;
+  transform-origin: 50% 100%;
+}
+
+.d3-skyline__layer--front {
+  opacity: 1;
+  transform-origin: 50% 100%;
+}
+
+.d3-skyline__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.d3-skyline__mass {
+  fill: rgba(15, 23, 42, 0.12);
+}
+
+.d3-skyline__mass--muted {
+  fill: rgba(15, 23, 42, 0.07);
+}
+
+.d3-skyline__mass--front {
+  fill: rgba(15, 23, 42, 0.18);
+}
+
+.d3-skyline__roof {
+  fill: rgba(15, 23, 42, 0.14);
+}
+
+.d3-skyline__window {
+  fill: rgba(15, 23, 42, 0.06);
+}
+
+.d3-skyline__window--lit {
+  fill: rgba(180, 83, 9, 0.35);
+  animation: d3-window-glow 4s ease-in-out infinite;
+}
+
+.d3-skyline__crane-base,
+.d3-skyline__crane-mast,
+.d3-skyline__crane-jib {
+  fill: none;
+  stroke: rgba(180, 83, 9, 0.45);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.d3-skyline__crane-jib--counter {
+  stroke: rgba(15, 23, 42, 0.25);
+  stroke-width: 1.5;
+}
+
+.d3-skyline__ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(15, 23, 42, 0.15) 20%,
+    rgba(15, 23, 42, 0.2) 50%,
+    rgba(15, 23, 42, 0.15) 80%,
+    transparent
+  );
+}
+
+@keyframes d3-window-glow {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 .d3-hero__layout {
   position: relative;
   z-index: 2;
@@ -1074,12 +1176,18 @@
     transform: none;
   }
 
+  .d3-skyline__window--lit {
+    animation: none;
+    opacity: 0.75;
+  }
+
   .d3-scene__orb,
   .d3-scene__mesh,
   .d3-scene__img,
   .d3-float,
   .d3-hero__copy-inner,
-  .d3-parallax-wrap {
+  .d3-parallax-wrap,
+  .d3-skyline__layer {
     transform: none !important;
   }
 

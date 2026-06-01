@@ -12,6 +12,7 @@ import { CourseOfferCard } from './CourseOfferCard'
 import { d3Images } from './images'
 import { useParallaxScene } from '../../hooks/useParallaxScene'
 import { ParallaxImage } from './ParallaxImage'
+import { BuildingSkyline } from './BuildingSkyline'
 import './Design3.css'
 
 const includes = [
@@ -79,6 +80,8 @@ export function Design3() {
           style={layer({ scroll: 0.08, mouse: 0.05 })}
           aria-hidden
         />
+
+        <BuildingSkyline layer={layer} />
 
         <div className="d3-container d3-hero__layout">
           <FadeIn className="d3-hero__copy" onMount delay={0}>
