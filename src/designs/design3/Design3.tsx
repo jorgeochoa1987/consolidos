@@ -2,30 +2,30 @@ import {
   BookOpenText,
   Certificate,
   ChalkboardTeacher,
-  Scales,
+  Clock,
+  VideoCamera,
 } from '@phosphor-icons/react'
 import { FadeIn } from '../../components/FadeIn'
 import { Logo } from '../../components/Logo'
+import { courses } from '../design2/data'
+import { CourseOfferCard } from './CourseOfferCard'
 import { d3Images } from './images'
 import { useParallaxScene } from '../../hooks/useParallaxScene'
 import { ParallaxImage } from './ParallaxImage'
 import './Design3.css'
 
-const pillars = [
+const includes = [
   {
-    title: 'Normativa vigente',
-    text: 'Cada módulo se revisa contra NSR-10 y reglamentos colombianos — no copias de cursos extranjeros.',
-    image: d3Images.pillar(1),
+    title: 'Clases en video HD',
+    text: 'Lecciones por módulo, pausables y actualizables según cambie la normativa.',
   },
   {
-    title: 'Criterio de obra',
-    text: 'Casos reales: licencia, interventoría, estructuras y BIM explicados por quien los ejecuta.',
-    image: d3Images.pillar(2),
+    title: 'Material de obra',
+    text: 'Plantillas, checklists y ejemplos de planos listos para licencia e interventoría.',
   },
   {
-    title: 'Rigor del gremio',
-    text: 'Contenido pensado con cámaras y colegios: formación que eleva el estándar del sector.',
-    image: d3Images.pillar(3),
+    title: 'Docentes en sitio',
+    text: 'Ingenieros que diseñan y ejecutan bajo reglamento colombiano, no teóricos de otro país.',
   },
 ] as const
 
@@ -39,7 +39,8 @@ const areas = [
   'Urbanismo',
 ] as const
 
-const gallery = [d3Images.gallery(1), d3Images.gallery(2), d3Images.gallery(3)] as const
+const openCourse = courses.find((c) => c.status === 'open')!
+const catalogCourses = courses.filter((c) => c.id !== openCourse.id).slice(0, 4)
 
 export function Design3() {
   const { sceneRef, layer } = useParallaxScene()
@@ -48,187 +49,241 @@ export function Design3() {
     <div className="design-3">
       <header className="d3-header">
         <div className="d3-container d3-header__inner">
-          <a href="#" className="d3-header__brand" aria-label="Consolidados Academia">
+          <a href="#" className="d3-header__brand" aria-label="Consolidados Cursos">
             <Logo width={150} height={45} />
           </a>
           <nav className="d3-nav" aria-label="Principal">
-            <a href="#propuesta">Propuesta</a>
-            <a href="#programa">Programa</a>
+            <a href="#cursos">Cursos</a>
+            <a href="#catalogo">Catálogo</a>
             <a href="#inscripcion">Inscripción</a>
           </nav>
           <a href="#inscripcion" className="d3-btn d3-btn--gold d3-header__cta">
-            Reservar cupo
+            Inscribirme
           </a>
         </div>
       </header>
 
-      <section className="d3-hero" ref={heroRef}>
+      <section className="d3-hero d3-scene" ref={sceneRef}>
+        <div
+          className="d3-scene__orb d3-scene__orb--a"
+          style={layer({ scroll: 0.12, mouse: 0.15 })}
+          aria-hidden
+        />
+        <div
+          className="d3-scene__orb d3-scene__orb--b"
+          style={layer({ scroll: 0.22, mouse: 0.2 })}
+          aria-hidden
+        />
+        <div
+          className="d3-scene__mesh"
+          style={layer({ scroll: 0.08, mouse: 0.05 })}
+          aria-hidden
+        />
+
         <div className="d3-container d3-hero__layout">
           <FadeIn className="d3-hero__copy" onMount delay={0}>
-            <p className="d3-hero__seal">Academia Consolidados · Ingeniería civil</p>
-            <h1 className="d3-hero__title">
-              La formación técnica que el{' '}
-              <span className="d3-hero__gold">gremio colombiano</span> estaba esperando
-            </h1>
-            <p className="d3-hero__lead">
-              Cursos de alto nivel, anclados en normativa nacional. Para ingenieros que no
-              pueden permitirse aprender con estándares de otro país.
-            </p>
-            <div className="d3-hero__actions">
-              <a href="#inscripcion" className="d3-btn d3-btn--gold">
-                Asegurar mi lugar
-              </a>
-              <a href="#programa" className="d3-btn d3-btn--outline">
-                Ver programa
-              </a>
+            <div
+              className="d3-hero__copy-inner"
+              style={layer({ scroll: -0.06, mouse: 0.18, scaleFalloff: 0.04 })}
+            >
+              <p className="d3-hero__seal">Catálogo 2026 · Cursos de ingeniería civil</p>
+              <h1 className="d3-hero__title">
+                Aprenda la <span className="d3-hero__gold">normativa colombiana</span>{' '}
+                con quien la aplica en obra
+              </h1>
+              <p className="d3-hero__lead">
+                Cursos online con video, guías descargables y casos reales. Formación
+                pensada para licencias, estructuras, BIM y gestión de proyecto.
+              </p>
+              <div className="d3-hero__actions">
+                <a href="#cursos" className="d3-btn d3-btn--gold">
+                  Ver curso abierto
+                </a>
+                <a href="#catalogo" className="d3-btn d3-btn--outline">
+                  Explorar catálogo
+                </a>
+              </div>
+              <p className="d3-hero__note">
+                <Clock size={16} weight="duotone" aria-hidden />
+                Acceso 24/7 · Actualización normativa · Cupos por cohorte
+              </p>
             </div>
           </FadeIn>
 
-          <FadeIn as="figure" className="d3-hero__figure" onMount delay={140}>
+          <div className="d3-scene__stage">
+            <div
+              className="d3-float d3-float--open"
+              style={layer({ scroll: 0.5, mouse: 0.85, scaleFalloff: 0.06 })}
+            >
+              <strong>Abierto</strong>
+              <span>Inscripciones hoy</span>
+            </div>
+            <div
+              className="d3-float d3-float--areas"
+              style={layer({ scroll: 0.68, mouse: 1, scaleFalloff: 0.08 })}
+            >
+              <strong>7</strong>
+              <span>rutas de cursos</span>
+            </div>
+            <div
+              className="d3-float d3-float--hours"
+              style={layer({ scroll: 0.38, mouse: 0.7, scaleFalloff: 0.05 })}
+            >
+              10–18 h por curso
+            </div>
+
             <img
               src={d3Images.heroAccent}
               alt=""
-              className="d3-hero__photo d3-hero__photo--back"
-              style={{ transform: `translate3d(0, ${layers.back}px, 0)` }}
+              className="d3-scene__img d3-scene__img--back"
+              style={layer({ scroll: 0.18, mouse: 0.28, scaleFalloff: 0.05 })}
               loading="eager"
               decoding="async"
             />
             <img
               src={d3Images.heroMain}
-              alt="Ingenieros en obra civil revisando planos"
-              className="d3-hero__photo d3-hero__photo--front"
-              style={{ transform: `translate3d(0, ${layers.front}px, 0)` }}
+              alt="Curso de ingeniería civil en línea"
+              className="d3-scene__img d3-scene__img--main"
+              style={layer({ scroll: 0.4, mouse: 0.5, scaleFalloff: 0.12 })}
               loading="eager"
               decoding="async"
             />
-          </FadeIn>
+          </div>
         </div>
       </section>
 
-      <FadeIn as="section" className="d3-manifesto" id="propuesta">
-        <div className="d3-container d3-manifesto__inner">
-          <figure className="d3-manifesto__media">
-            <img
-              src={d3Images.classroom}
-              alt="Sesión de formación técnica"
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
-          <div className="d3-manifesto__text">
-            <blockquote className="d3-manifesto__quote">
-              <p>
-                «En Colombia casi nadie enseña ingeniería civil con la normativa que
-                realmente firmamos en planos. Esta academia existe para cambiar eso.»
-              </p>
-            </blockquote>
-            <div className="d3-manifesto__stats">
-              <div>
-                <strong>7</strong>
-                <span>áreas de especialización</span>
-              </div>
-              <div>
-                <strong>NSR-10</strong>
-                <span>eje estructural del catálogo</span>
-              </div>
-              <div>
-                <strong>5</strong>
-                <span>líneas docentes en producción</span>
-              </div>
-            </div>
+      <FadeIn as="section" className="d3-spotlight" id="cursos">
+        <div className="d3-container">
+          <div className="d3-section-head">
+            <h2>Curso disponible ahora</h2>
+            <p>Empiece hoy con el módulo que ya tiene inscripciones abiertas.</p>
           </div>
+          <CourseOfferCard course={openCourse} featured />
         </div>
       </FadeIn>
 
-      <FadeIn as="section" className="d3-pillars">
+      <FadeIn as="section" className="d3-catalog" id="catalogo">
         <div className="d3-container">
-          <h2 className="d3-section-title">Por qué inscribirse ahora</h2>
-          <div className="d3-pillars__grid">
-            {pillars.map((item, i) => (
-              <FadeIn
-                key={item.title}
-                as="article"
-                className="d3-pillar"
-                delay={i * 90}
-              >
-                <div className="d3-pillar__media">
-                  <img src={item.image} alt="" loading="lazy" decoding="async" />
-                </div>
-                <span className="d3-pillar__index">{String(i + 1).padStart(2, '0')}</span>
+          <div className="d3-section-head">
+            <h2>Próximos cursos del catálogo</h2>
+            <p>
+              Reserve su cupo o reciba aviso cuando abra cada ruta. Todos con enfoque en
+              normativa y práctica colombiana.
+            </p>
+          </div>
+          <div className="d3-catalog__grid">
+            {catalogCourses.map((course, i) => (
+              <FadeIn key={course.id} delay={i * 80}>
+                <CourseOfferCard course={course} />
+              </FadeIn>
+            ))}
+          </div>
+          <p className="d3-catalog__more">
+            +{courses.length - catalogCourses.length - 1} cursos más en las 7 áreas de
+            ingeniería civil
+          </p>
+        </div>
+      </FadeIn>
+
+      <FadeIn as="section" className="d3-includes">
+        <div className="d3-container">
+          <div className="d3-section-head d3-section-head--center">
+            <h2>Qué recibe al comprar un curso</h2>
+            <p>Todo lo necesario para llevar el aprendizaje directo a su proyecto.</p>
+          </div>
+          <div className="d3-includes__grid">
+            {includes.map((item, i) => (
+              <FadeIn key={item.title} as="article" className="d3-include" delay={i * 70}>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </FadeIn>
             ))}
           </div>
+          <ul className="d3-includes__perks">
+            <li>
+              <VideoCamera size={20} weight="duotone" aria-hidden />
+              Video + descargables
+            </li>
+            <li>
+              <ChalkboardTeacher size={20} weight="duotone" aria-hidden />
+              Especialistas locales
+            </li>
+            <li>
+              <BookOpenText size={20} weight="duotone" aria-hidden />
+              Casos de licencia y obra
+            </li>
+            <li>
+              <Certificate size={20} weight="duotone" aria-hidden />
+              Certificado (en desarrollo)
+            </li>
+          </ul>
         </div>
       </FadeIn>
 
-      <FadeIn as="section" className="d3-program" id="programa">
-        <div className="d3-container">
-          <h2 className="d3-section-title">Programa académico en despliegue</h2>
-          <p className="d3-program__lead">
-            Siete grandes áreas de ingeniería civil. Rutas progresivas con video, guías y
-            evaluación aplicada a obra colombiana.
-          </p>
-
-          <div className="d3-gallery">
-            {gallery.map((src, i) => (
-              <FadeIn key={src} as="figure" className="d3-gallery__item" delay={i * 100}>
-                <img
-                  src={src}
-                  alt={`Módulo formativo ${i + 1}`}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </FadeIn>
-            ))}
+      <FadeIn as="section" className="d3-routes">
+        <div className="d3-container d3-routes__inner">
+          <ParallaxImage
+            src={d3Images.classroom}
+            alt="Clase en línea de ingeniería civil"
+            speed={0.35}
+            wrapperClassName="d3-routes__media"
+            loading="lazy"
+            decoding="async"
+          />
+          <div>
+            <h2 className="d3-section-title">7 rutas de especialización</h2>
+            <p className="d3-routes__lead">
+              Elija su área y avance módulo a módulo. Cada ruta agrupa varios cursos
+              progresivos.
+            </p>
+            <ul className="d3-routes__areas">
+              {areas.map((area) => (
+                <li key={area}>{area}</li>
+              ))}
+            </ul>
+            <a href="#inscripcion" className="d3-btn d3-btn--gold">
+              Quiero acceso anticipado
+            </a>
           </div>
-
-          <ul className="d3-program__areas">
-            {areas.map((area) => (
-              <li key={area}>{area}</li>
-            ))}
-          </ul>
-          <ul className="d3-program__features">
-            <li>
-              <ChalkboardTeacher size={22} weight="duotone" aria-hidden />
-              Clases por especialistas locales
-            </li>
-            <li>
-              <BookOpenText size={22} weight="duotone" aria-hidden />
-              Material descargable para obra
-            </li>
-            <li>
-              <Scales size={22} weight="duotone" aria-hidden />
-              Enfoque normativo y licenciamiento
-            </li>
-            <li>
-              <Certificate size={22} weight="duotone" aria-hidden />
-              Certificación en desarrollo
-            </li>
-          </ul>
         </div>
       </FadeIn>
 
       <FadeIn as="section" className="d3-offer" id="inscripcion">
         <div className="d3-container d3-offer__inner">
-          <figure className="d3-offer__media">
-            <img
-              src={d3Images.team}
-              alt="Equipo técnico en sitio"
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
+          <ParallaxImage
+            src={d3Images.team}
+            alt="Equipo docente"
+            speed={0.32}
+            wrapperClassName="d3-offer__media"
+            loading="lazy"
+            decoding="async"
+          />
           <div className="d3-offer__panel">
-            <h2>Lista de fundadores</h2>
+            <p className="d3-offer__tag">Precio de lanzamiento</p>
+            <h2>Reserve su cupo con tarifa fundador</h2>
             <p>
-              Los primeros inscritos acceden a precio preferencial y prioridad en apertura
-              de módulos. Cupos limitados por cohorte.
+              Los primeros inscritos en cada curso obtienen descuento y acceso prioritario
+              cuando se publiquen los módulos de su área.
             </p>
+            <ul className="d3-offer__list">
+              <li>Precio preferencial de pre-venta</li>
+              <li>Aviso antes del público general</li>
+              <li>Sin pago hasta confirmar apertura del curso</li>
+            </ul>
             <form className="d3-offer__form" onSubmit={(e) => e.preventDefault()}>
               <label htmlFor="d3-name">Nombre completo</label>
               <input id="d3-name" type="text" autoComplete="name" placeholder="Ingeniero(a)…" />
+              <label htmlFor="d3-course-interest">Curso de interés</label>
+              <select id="d3-course-interest" className="d3-offer__select" defaultValue="">
+                <option value="" disabled>
+                  Seleccione un curso
+                </option>
+                {courses.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.title}
+                  </option>
+                ))}
+              </select>
               <label htmlFor="d3-email-offer">Correo profesional</label>
               <input
                 id="d3-email-offer"
@@ -237,9 +292,11 @@ export function Design3() {
                 placeholder="nombre@empresa.com"
               />
               <button type="submit" className="d3-btn d3-btn--gold d3-btn--wide">
-                Unirme a la lista de fundadores
+                Reservar mi cupo
               </button>
-              <p className="d3-offer__legal">Sin compromiso. Aviso antes de apertura pública.</p>
+              <p className="d3-offer__legal">
+                Le contactamos en menos de 24 h hábiles con precio y fecha de inicio.
+              </p>
             </form>
           </div>
         </div>
@@ -248,7 +305,7 @@ export function Design3() {
       <footer className="d3-footer">
         <div className="d3-container d3-footer__inner">
           <Logo width={130} height={40} />
-          <p>© {new Date().getFullYear()} Consolidados S.A.S · Academia de ingeniería</p>
+          <p>© {new Date().getFullYear()} Consolidados S.A.S · Cursos de ingeniería civil</p>
         </div>
       </footer>
     </div>
