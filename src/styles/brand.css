@@ -1,0 +1,17 @@
+/* Paleta Consolidados — compartida por los tres demos */
+:root {
+  --brand-primary: #0057d9;
+  --brand-primary-hover: #003e9c;
+  --brand-secondary: #4da3ff;
+  --brand-accent: #ff8a00;
+  --brand-accent-hover: #e67a00;
+  --brand-bg: #f5f7fa;
+  --brand-surface: #ffffff;
+  --brand-text: #1f2937;
+  --brand-text-muted: #6b7280;
+  --brand-border: #e5e7eb;
+  --brand-primary-rgb: 0, 87, 217;
+  --brand-secondary-rgb: 77, 163, 255;
+  --brand-accent-rgb: 255, 138, 0;
+  --brand-text-rgb: 31, 41, 55;
+}

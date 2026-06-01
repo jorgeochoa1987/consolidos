@@ -13,8 +13,8 @@
 }
 
 .d2-course:hover {
-  border-color: rgba(29, 78, 216, 0.35);
-  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+  border-color: rgba(var(--brand-primary-rgb), 0.35);
+  box-shadow: 0 12px 40px rgba(var(--brand-text-rgb), 0.08);
   transform: translateY(-2px);
 }
 
@@ -37,7 +37,7 @@
   min-height: 160px;
   padding: 1rem;
   overflow: hidden;
-  background: #e2e8f0;
+  background: var(--brand-border);
 }
 
 .d2-course__thumb-img {
@@ -63,7 +63,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 35%, rgba(15, 23, 42, 0.75) 100%);
+  background: linear-gradient(180deg, transparent 35%, rgba(var(--brand-text-rgb), 0.75) 100%);
   pointer-events: none;
 }
 
@@ -117,8 +117,8 @@
 }
 
 .d2-course__status--soon {
-  color: #1e3a8a;
-  background: #dbeafe;
+  color: var(--brand-primary-hover);
+  background: rgba(var(--brand-secondary-rgb), 0.2);
 }
 
 .d2-course__level {
@@ -197,7 +197,7 @@
   font-size: 0.85rem;
   font-weight: 600;
   color: #fff;
-  background: var(--d2-accent);
+  background: var(--d2-cta);
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -209,7 +209,7 @@
 }
 
 .d2-course__cta:hover:not(:disabled) {
-  background: var(--d2-accent-hover);
+  background: var(--d2-cta-hover);
 }
 
 .d2-course__cta:active:not(:disabled) {

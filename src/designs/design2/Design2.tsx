@@ -52,7 +52,7 @@ export function Design2() {
             <a href="#docentes">Docentes</a>
             <a href="#contacto">Contacto</a>
           </nav>
-          <a href="#catalogo" className="d2-btn d2-btn--primary d2-header__cta">
+          <a href="#catalogo" className="d2-btn d2-btn--cta d2-header__cta">
             Ver catálogo
           </a>
         </div>
@@ -274,7 +274,7 @@ export function Design2() {
               placeholder="nombre@empresa.com"
               autoComplete="email"
             />
-            <button type="submit" className="d2-btn d2-btn--primary">
+            <button type="submit" className="d2-btn d2-btn--cta">
               Unirme a la lista
             </button>
           </form>

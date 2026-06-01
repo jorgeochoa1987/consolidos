@@ -9,13 +9,13 @@
 }
 
 .design-placeholder--2 {
-  background: #0f172a;
+  background: var(--brand-primary-hover);
   color: #e2e8f0;
 }
 
 .design-placeholder--3 {
-  background: #1a1208;
-  color: #f5e6d3;
+  background: var(--brand-bg);
+  color: var(--brand-text);
 }
 
 .design-placeholder__header {

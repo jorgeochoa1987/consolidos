@@ -1,16 +1,18 @@
-/* Estructura + tema Diseño 1 — corporativo clásico (negro / blanco) */
+/* Diseño 1 — corporativo con paleta Consolidados */
 
 .design-1 {
-  --bg: #0a0a0a;
-  --bg-elevated: #141414;
-  --text: #f5f5f5;
-  --text-muted: #a3a3a3;
-  --accent: #ffffff;
-  --accent-fg: #0a0a0a;
-  --border: #262626;
+  --bg: var(--brand-bg);
+  --bg-elevated: var(--brand-surface);
+  --text: var(--brand-text);
+  --text-muted: var(--brand-text-muted);
+  --primary: var(--brand-primary);
+  --primary-hover: var(--brand-primary-hover);
+  --cta: var(--brand-accent);
+  --cta-hover: var(--brand-accent-hover);
+  --border: var(--brand-border);
   --font-display: 'Georgia', 'Times New Roman', serif;
   --font-body: 'Georgia', 'Times New Roman', serif;
-  --header-bg: rgba(10, 10, 10, 0.95);
+  --header-bg: var(--brand-primary-hover);
 
   min-height: 100vh;
   background: var(--bg);
@@ -54,7 +56,7 @@
   top: 0;
   z-index: 50;
   background: var(--header-bg);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: background 0.35s, border-color 0.35s, box-shadow 0.35s;
 }
 
@@ -78,16 +80,22 @@
 }
 
 .design-1 .site-nav a {
-  opacity: 0.85;
-  transition: opacity 0.2s;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s;
 }
 
 .design-1 .site-nav a:hover {
-  opacity: 1;
+  color: #fff;
 }
 
 .design-1 .hero {
   padding: 4rem 0 5rem;
+  background: linear-gradient(
+    165deg,
+    rgba(var(--brand-primary-rgb), 0.08) 0%,
+    var(--brand-bg) 45%,
+    var(--brand-surface) 100%
+  );
 }
 
 .design-1 .hero__grid {
@@ -112,7 +120,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 1rem;
-  color: var(--text-muted);
+  color: var(--primary);
 }
 
 .design-1 .hero h1 {
@@ -125,7 +133,7 @@
   margin: 0 0 2rem;
   font-size: 1.0625rem;
   max-width: 32ch;
-  opacity: 0.85;
+  color: var(--text-muted);
 }
 
 .design-1 .hero__actions {
@@ -141,7 +149,7 @@
   padding: 0.875rem 1.5rem;
   font-size: 0.9375rem;
   font-weight: 600;
-  border-radius: 2px;
+  border-radius: 8px;
   border: 2px solid transparent;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
@@ -152,15 +160,23 @@
 }
 
 .design-1 .btn--primary {
-  background: var(--accent);
-  color: var(--accent-fg);
+  background: var(--cta);
+  color: #fff;
   border-color: transparent;
 }
 
+.design-1 .btn--primary:hover {
+  background: var(--cta-hover);
+}
+
 .design-1 .btn--ghost {
-  background: transparent;
-  border-color: var(--border);
-  color: var(--text);
+  background: var(--brand-surface);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.design-1 .btn--ghost:hover {
+  background: rgba(var(--brand-primary-rgb), 0.06);
 }
 
 .design-1 .hero__visual {
@@ -169,6 +185,7 @@
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--border);
+  box-shadow: 0 16px 40px rgba(var(--brand-text-rgb), 0.1);
 }
 
 .design-1 .hero__visual-img {
@@ -197,11 +214,12 @@
 .design-1 .section__title {
   margin: 0 0 0.5rem;
   font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--text);
 }
 
 .design-1 .section__subtitle {
   margin: 0 0 2.5rem;
-  opacity: 0.7;
+  color: var(--text-muted);
   max-width: 48ch;
 }
 
@@ -226,6 +244,8 @@
 
 .design-1 .card:hover {
   transform: translateY(-4px);
+  border-color: rgba(var(--brand-primary-rgb), 0.35);
+  box-shadow: 0 12px 32px rgba(var(--brand-text-rgb), 0.08);
 }
 
 .design-1 .card__num {
@@ -233,7 +253,7 @@
   font-weight: 700;
   line-height: 1;
   margin-bottom: 0.75rem;
-  opacity: 0.25;
+  color: var(--brand-secondary);
 }
 
 .design-1 .card h3 {
@@ -244,13 +264,15 @@
 .design-1 .card p {
   margin: 0;
   font-size: 0.9375rem;
-  opacity: 0.8;
+  color: var(--text-muted);
 }
 
 .design-1 .cta {
   text-align: center;
   padding: 4rem 0;
   border-top: 1px solid var(--border);
+  background: var(--primary-hover);
+  color: #fff;
 }
 
 .design-1 .cta h2 {
@@ -261,15 +283,24 @@
 .design-1 .cta p {
   margin: 0 auto 2rem;
   max-width: 40ch;
-  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.design-1 .cta .btn--primary {
+  background: var(--cta);
+}
+
+.design-1 .cta .btn--primary:hover {
+  background: var(--cta-hover);
 }
 
 .design-1 .site-footer {
   padding: 2rem 0 5rem;
   font-size: 0.875rem;
-  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.65);
   text-align: center;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--primary-hover);
 }
 
 @media (max-width: 640px) {
