@@ -1,4 +1,5 @@
 import { BookOpen, Clock, PlayCircle, Stack } from '@phosphor-icons/react'
+import { courseImage } from '../../utils/picsum'
 import type { Course } from './data'
 import './CourseCard.css'
 
@@ -13,9 +14,16 @@ export function CourseCard({ course, featured = false }: CourseCardProps) {
       className={`d2-course${featured ? ' d2-course--featured' : ''}`}
       data-area={course.area}
     >
-      <div className="d2-course__thumb" aria-hidden>
+      <div className="d2-course__thumb">
+        <img
+          src={courseImage(course.id)}
+          alt=""
+          className="d2-course__thumb-img"
+          loading="lazy"
+          decoding="async"
+        />
         <span className="d2-course__area">{course.areaLabel}</span>
-        <PlayCircle className="d2-course__play" size={featured ? 40 : 28} weight="duotone" />
+        <PlayCircle className="d2-course__play" size={featured ? 40 : 28} weight="duotone" aria-hidden />
       </div>
 
       <div className="d2-course__body">

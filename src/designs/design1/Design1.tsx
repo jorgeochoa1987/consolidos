@@ -1,4 +1,6 @@
+import { FadeIn } from '../../components/FadeIn'
 import { Logo } from '../../components/Logo'
+import { previewImages } from '../../utils/picsum'
 import './Design1.css'
 
 export function Design1() {
@@ -20,7 +22,7 @@ export function Design1() {
       <main>
         <section className="hero">
           <div className="container hero__grid">
-            <div>
+            <FadeIn onMount delay={0}>
               <p className="hero__eyebrow">Construcción · Inmobiliaria</p>
               <h1>Soluciones integrales para proyectos que perduran</h1>
               <p className="hero__lead">
@@ -35,46 +37,66 @@ export function Design1() {
                   Ver servicios
                 </a>
               </div>
-            </div>
-            <div className="hero__visual" aria-hidden="true">
-              <svg className="hero__visual-icon" viewBox="0 0 120 100" fill="currentColor">
-                <rect x="10" y="40" width="25" height="55" />
-                <rect x="45" y="20" width="30" height="75" />
-                <rect x="85" y="35" width="25" height="60" />
-              </svg>
-            </div>
+            </FadeIn>
+            <FadeIn className="hero__visual" onMount delay={140}>
+              <img
+                src={previewImages.obra}
+                alt="Proyecto de construcción"
+                className="hero__visual-img"
+                loading="eager"
+                decoding="async"
+              />
+            </FadeIn>
           </div>
         </section>
 
-        <section className="section section--alt" id="servicios">
+        <FadeIn as="section" className="section section--alt" id="servicios">
           <div className="container">
             <h2 className="section__title">Nuestros servicios</h2>
             <p className="section__subtitle">
               Acompañamos cada etapa del proyecto, desde la planeación hasta la entrega.
             </p>
             <div className="cards">
-              <article className="card">
+              <FadeIn as="article" className="card" delay={0}>
+                <img
+                  src={previewImages.servicio1}
+                  alt=""
+                  className="card__img"
+                  loading="lazy"
+                />
                 <div className="card__num">01</div>
                 <h3>Construcción</h3>
                 <p>
                   Obras civiles, estructuras y acabados con control de calidad en sitio.
                 </p>
-              </article>
-              <article className="card">
+              </FadeIn>
+              <FadeIn as="article" className="card" delay={90}>
+                <img
+                  src={previewImages.servicio2}
+                  alt=""
+                  className="card__img"
+                  loading="lazy"
+                />
                 <div className="card__num">02</div>
                 <h3>Desarrollo inmobiliario</h3>
                 <p>Proyectos residenciales y comerciales con visión de largo plazo.</p>
-              </article>
-              <article className="card">
+              </FadeIn>
+              <FadeIn as="article" className="card" delay={180}>
+                <img
+                  src={previewImages.servicio3}
+                  alt=""
+                  className="card__img"
+                  loading="lazy"
+                />
                 <div className="card__num">03</div>
                 <h3>Consultoría</h3>
                 <p>Asesoría técnica, presupuestos y gestión de licencias y permisos.</p>
-              </article>
+              </FadeIn>
             </div>
           </div>
-        </section>
+        </FadeIn>
 
-        <section className="section" id="nosotros">
+        <FadeIn as="section" className="section" id="nosotros">
           <div className="container">
             <h2 className="section__title">Por qué Consolidados</h2>
             <p className="section__subtitle">
@@ -82,9 +104,9 @@ export function Design1() {
               presupuesto acordados con el cliente.
             </p>
           </div>
-        </section>
+        </FadeIn>
 
-        <section className="cta" id="contacto">
+        <FadeIn as="section" className="cta" id="contacto">
           <div className="container">
             <h2>¿Listo para iniciar su proyecto?</h2>
             <p>Escríbanos y le respondemos en menos de 24 horas hábiles.</p>
@@ -92,7 +114,7 @@ export function Design1() {
               contacto@consolidos.com
             </a>
           </div>
-        </section>
+        </FadeIn>
       </main>
 
       <footer className="site-footer">

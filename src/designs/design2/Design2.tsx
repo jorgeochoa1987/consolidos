@@ -5,7 +5,9 @@ import {
   MagnifyingGlass,
   UsersThree,
 } from '@phosphor-icons/react'
+import { FadeIn } from '../../components/FadeIn'
 import { Logo } from '../../components/Logo'
+import { previewImages } from '../../utils/picsum'
 import { CourseCard } from './CourseCard'
 import { areaFilters, courses, instructors, type CourseArea } from './data'
 import './Design2.css'
@@ -58,7 +60,7 @@ export function Design2() {
 
       <section className="d2-hero">
         <div className="d2-container d2-hero__layout">
-          <div className="d2-hero__copy">
+          <FadeIn className="d2-hero__copy" onMount delay={0}>
             <p className="d2-hero__label">Academia · Ingeniería civil</p>
             <h1>
               Cursos profesionales basados en{' '}
@@ -94,49 +96,60 @@ export function Design2() {
                 Buscar
               </button>
             </form>
-          </div>
+          </FadeIn>
 
-          <ul className="d2-hero__proof" aria-label="Resumen de la academia">
-            <li>
-              <GraduationCap size={22} weight="duotone" aria-hidden />
-              <div>
-                <strong>7</strong>
-                <span>áreas de ing. civil</span>
-              </div>
-            </li>
-            <li>
-              <Certificate size={22} weight="duotone" aria-hidden />
-              <div>
-                <strong>NSR-10</strong>
-                <span>y reglamento nacional</span>
-              </div>
-            </li>
-            <li>
-              <UsersThree size={22} weight="duotone" aria-hidden />
-              <div>
-                <strong>5</strong>
-                <span>líneas docentes</span>
-              </div>
-            </li>
-          </ul>
+          <FadeIn className="d2-hero__aside" onMount delay={120}>
+            <figure className="d2-hero__media">
+              <img
+                src={previewImages.campus}
+                alt="Campus y formación técnica"
+                loading="eager"
+                decoding="async"
+              />
+            </figure>
+            <ul className="d2-hero__proof" aria-label="Resumen de la academia">
+              <li>
+                <GraduationCap size={22} weight="duotone" aria-hidden />
+                <div>
+                  <strong>7</strong>
+                  <span>áreas de ing. civil</span>
+                </div>
+              </li>
+              <li>
+                <Certificate size={22} weight="duotone" aria-hidden />
+                <div>
+                  <strong>NSR-10</strong>
+                  <span>y reglamento nacional</span>
+                </div>
+              </li>
+              <li>
+                <UsersThree size={22} weight="duotone" aria-hidden />
+                <div>
+                  <strong>5</strong>
+                  <span>líneas docentes</span>
+                </div>
+              </li>
+            </ul>
+          </FadeIn>
         </div>
       </section>
 
-      <section className="d2-catalog" id="catalogo">
+      <FadeIn as="section" className="d2-catalog" id="catalogo">
         <div className="d2-container">
-          <div className="d2-catalog__head">
+          <FadeIn className="d2-catalog__head" delay={0}>
             <h2>Catálogo de cursos</h2>
             <p>
               Contenido en producción con el gremio de ingeniería. Priorizamos rigor
               técnico sobre volumen.
             </p>
-          </div>
+          </FadeIn>
 
-          <div
-            className="d2-filters"
-            role="tablist"
-            aria-label="Filtrar por área"
-          >
+          <FadeIn delay={80}>
+            <div
+              className="d2-filters"
+              role="tablist"
+              aria-label="Filtrar por área"
+            >
             {areaFilters.map(({ id, label }) => (
               <button
                 key={id}
@@ -149,10 +162,12 @@ export function Design2() {
                 {label}
               </button>
             ))}
-          </div>
+            </div>
+          </FadeIn>
 
           {filtered.length === 0 ? (
-            <div className="d2-empty" role="status">
+            <FadeIn className="d2-empty" delay={120}>
+              <div role="status">
               <p>No hay cursos con ese criterio.</p>
               <button
                 type="button"
@@ -164,27 +179,30 @@ export function Design2() {
               >
                 Limpiar filtros
               </button>
-            </div>
+              </div>
+            </FadeIn>
           ) : (
             <>
-              <div className="d2-featured-wrap">
+              <FadeIn className="d2-featured-wrap" delay={120}>
                 <h3 className="d2-sr-only">Curso destacado</h3>
                 <CourseCard course={featured} featured />
-              </div>
+              </FadeIn>
 
               {catalog.length > 0 && (
                 <div className="d2-grid">
-                  {catalog.map((course) => (
-                    <CourseCard key={course.id} course={course} />
+                  {catalog.map((course, i) => (
+                    <FadeIn key={course.id} delay={160 + i * 70}>
+                      <CourseCard course={course} />
+                    </FadeIn>
                   ))}
                 </div>
               )}
             </>
           )}
         </div>
-      </section>
+      </FadeIn>
 
-      <section className="d2-paths" id="rutas">
+      <FadeIn as="section" className="d2-paths" id="rutas">
         <div className="d2-container">
           <h2>Rutas por área</h2>
           <p className="d2-paths__lead">
@@ -212,9 +230,9 @@ export function Design2() {
               })}
           </ol>
         </div>
-      </section>
+      </FadeIn>
 
-      <section className="d2-instructors" id="docentes">
+      <FadeIn as="section" className="d2-instructors" id="docentes">
         <div className="d2-container">
           <h2>Quién enseña</h2>
           <p className="d2-instructors__lead">
@@ -222,18 +240,18 @@ export function Design2() {
             gestión de obra.
           </p>
           <div className="d2-instructors__grid">
-            {instructors.map((person) => (
-              <article key={person.role} className="d2-instructor-card">
+            {instructors.map((person, i) => (
+              <FadeIn key={person.role} as="article" className="d2-instructor-card" delay={i * 80}>
                 <h3>{person.role}</h3>
                 <p className="d2-instructor-card__focus">{person.courses}</p>
                 <p className="d2-instructor-card__meta">{person.modules}</p>
-              </article>
+              </FadeIn>
             ))}
           </div>
         </div>
-      </section>
+      </FadeIn>
 
-      <section className="d2-cta" id="contacto">
+      <FadeIn as="section" className="d2-cta" id="contacto">
         <div className="d2-container d2-cta__inner">
           <div>
             <h2>Lista de espera para nuevos cursos</h2>
@@ -261,7 +279,7 @@ export function Design2() {
             </button>
           </form>
         </div>
-      </section>
+      </FadeIn>
 
       <footer className="d2-footer">
         <div className="d2-container d2-footer__inner">
