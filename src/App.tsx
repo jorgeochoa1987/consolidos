@@ -1,5 +1,10 @@
+import { useState } from 'react'
 import { Logo } from './components/Logo'
 import { Icon } from './components/Icon'
+import {
+  FloatingDesignMenu,
+  type DesignOption,
+} from './components/FloatingDesignMenu'
 import './App.css'
 
 const socialLinks = [
@@ -10,8 +15,10 @@ const socialLinks = [
 ]
 
 export default function App() {
+  const [design, setDesign] = useState<DesignOption>(1)
+
   return (
-    <div className="app">
+    <div className="app" data-design={design}>
       <header className="header">
         <Logo className="header__logo" width={240} height={80} />
       </header>
@@ -41,6 +48,8 @@ export default function App() {
           © {new Date().getFullYear()} Consolidados S.A.S
         </p>
       </footer>
+
+      <FloatingDesignMenu value={design} onChange={setDesign} />
     </div>
   )
 }

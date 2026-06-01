@@ -1,0 +1,120 @@
+.floating-menu {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.floating-menu__list {
+  margin: 0;
+  padding: 0.35rem;
+  list-style: none;
+  min-width: 10.5rem;
+  border-radius: 12px;
+  background: rgba(22, 22, 22, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  backdrop-filter: blur(12px);
+  animation: floating-menu-in 0.18s ease-out;
+}
+
+@keyframes floating-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating-menu__item {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  font: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.floating-menu__item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.floating-menu__item--active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-weight: 500;
+}
+
+.floating-menu__trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(18, 18, 18, 0.92);
+  color: #fff;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.floating-menu__trigger:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+}
+
+.floating-menu__trigger:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.floating-menu__chevron {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  transition: transform 0.2s ease;
+}
+
+.floating-menu__chevron--open {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 480px) {
+  .floating-menu {
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    align-items: stretch;
+  }
+
+  .floating-menu__list {
+    width: 100%;
+  }
+
+  .floating-menu__trigger {
+    justify-content: center;
+  }
+}
