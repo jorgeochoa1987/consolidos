@@ -8,8 +8,8 @@
   --d2-line: var(--brand-border);
   --d2-accent: var(--brand-primary);
   --d2-accent-hover: var(--brand-primary-hover);
-  --d2-cta: var(--brand-accent);
-  --d2-cta-hover: var(--brand-accent-hover);
+  --d2-cta: var(--brand-primary);
+  --d2-cta-hover: var(--brand-primary-hover);
   --d2-secondary: var(--brand-secondary);
   --d2-hero-bg: var(--brand-primary-hover);
   --d2-sans: 'DM Sans', system-ui, sans-serif;

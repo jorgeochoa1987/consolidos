@@ -9,10 +9,10 @@
   --d3-primary: var(--brand-primary);
   --d3-primary-hover: var(--brand-primary-hover);
   --d3-secondary: var(--brand-secondary);
-  --d3-cta: var(--brand-accent);
-  --d3-cta-hover: var(--brand-accent-hover);
-  --d3-gold: var(--brand-accent);
-  --d3-gold-hover: var(--brand-accent-hover);
+  --d3-cta: var(--brand-primary);
+  --d3-cta-hover: var(--brand-primary-hover);
+  --d3-gold: var(--brand-primary);
+  --d3-gold-hover: var(--brand-primary-hover);
   --d3-header-bg: var(--brand-primary-hover);
   --d3-serif: 'Libre Baskerville', Georgia, serif;
   --d3-sans: 'DM Sans', system-ui, sans-serif;
@@ -1081,8 +1081,8 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--d3-cta);
-  background: rgba(var(--brand-accent-rgb), 0.12);
+  color: var(--d3-primary);
+  background: rgba(var(--brand-primary-rgb), 0.12);
   border-radius: 4px;
 }
 

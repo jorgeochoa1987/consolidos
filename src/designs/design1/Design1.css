@@ -7,8 +7,8 @@
   --text-muted: var(--brand-text-muted);
   --primary: var(--brand-primary);
   --primary-hover: var(--brand-primary-hover);
-  --cta: var(--brand-accent);
-  --cta-hover: var(--brand-accent-hover);
+  --cta: var(--brand-primary);
+  --cta-hover: var(--brand-primary-hover);
   --border: var(--brand-border);
   --font-display: 'Georgia', 'Times New Roman', serif;
   --font-body: 'Georgia', 'Times New Roman', serif;
